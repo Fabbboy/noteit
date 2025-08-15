@@ -23,7 +23,10 @@ async fn main() {
 
   let listener = TcpListener::bind(config.addr())
     .await
-    .expect("Failed to bind TCP listener");
+    .unwrap_or_else(|err| {
+      tracing::error!("Failed to bind TCP listener to {}: {}", config.addr(), err);
+      std::process::exit(1);
+    });
 
   let app = Router::new();
   tracing::info!("Server running on {}", config.addr());
