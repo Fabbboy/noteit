@@ -1,5 +1,5 @@
 [workspace]
-members = ["noteit-backend", "noteit-frontend"]
+members = ["apps/noteit-backend", "apps/noteit-frontend"]
 resolver = "3"
 
 [workspace.dependencies]
