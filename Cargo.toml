@@ -3,6 +3,13 @@ members = ["apps/noteit-backend", "apps/noteit-frontend"]
 resolver = "3"
 
 [workspace.dependencies]
+dotenv = "0.15.0"
+envy = "0.4.2"
+serde_with = "3.14"
+serde = "1.0.219"
+getset = "0.1.6"
+axum = "0.8.4"
+tokio = "1.47.1"
 
 [profile]
 
