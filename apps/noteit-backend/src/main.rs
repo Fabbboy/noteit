@@ -18,14 +18,14 @@ async fn main() {
 
   tracing_subscriber::registry()
     .with(EnvFilter::from_default_env())
-    .with(fmt::layer().compact()) // or .json() for prod
+    .with(fmt::layer().compact())
     .init();
 
-  let listener = TcpListener::bind(format!("{}:{}", config.host(), config.port()))
+  let listener = TcpListener::bind(config.addr())
     .await
     .expect("Failed to bind TCP listener");
 
   let app = Router::new();
-  tracing::info!("Server running on {}:{}", config.host(), config.port());
+  tracing::info!("Server running on {}", config.addr());
   axum::serve(listener, app).await.unwrap();
 }

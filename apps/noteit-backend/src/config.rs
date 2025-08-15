@@ -21,6 +21,12 @@ pub struct Config {
   psql: PsqlConfig,
 }
 
+impl Config {
+  pub fn addr(&self) -> String {
+    format!("{}:{}", self.host(), self.port())
+  }
+}
+
 #[serde_as]
 #[derive(Deserialize, Getters, Debug)]
 pub struct PsqlConfig {
