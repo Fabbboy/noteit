@@ -25,6 +25,7 @@ async fn main() {
     .await
     .expect("Failed to bind TCP listener");
 
-  let router = Router::new();
-  axum::serve(listener, router).await.unwrap();
+  let app = Router::new();
+  tracing::info!("Server running on {}:{}", config.host(), config.port());
+  axum::serve(listener, app).await.unwrap();
 }
